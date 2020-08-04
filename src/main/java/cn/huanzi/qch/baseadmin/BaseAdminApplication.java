@@ -58,16 +58,16 @@ public class BaseAdminApplication {
 @Configuration
 class IndexController {
 
-    @Autowired(required = false)
+    @Autowired()
     private SysUserService sysUserService;
 
-    @Autowired(required = false)
+    @Autowired()
     private SysSettingService sysSettingService;
 
-    @Autowired(required = false)
+    @Autowired()
     private SysUserMenuService sysUserMenuService;
 
-    @Autowired(required = false)
+    @Autowired()
     private SysShortcutMenuService sysShortcutMenuService;
 
     /**

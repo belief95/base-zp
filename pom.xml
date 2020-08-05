@@ -15,6 +15,17 @@
         <relativePath/>
     </parent>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <!-- 监听端口 -->
+        <server.port>8088</server.port>
+        <!-- 镜像名称-->
+        <docker.repostory>registry.cn-beijing.aliyuncs.com</docker.repostory>
+        <docker.registry.name>docker-repo-zp</docker.registry.name>
+    </properties>
+
     <dependencies>
         <!-- spring-boot-starter -->
         <dependency>
@@ -119,20 +130,18 @@
             <artifactId>oshi-json</artifactId>
             <version>3.6.1</version>
         </dependency>
+
+        <!-- mybatis-plus -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.2.0</version>
+        </dependency>
     </dependencies>
 
     <!--构建工具-->
     <build>
         <plugins>
-<!--            <plugin>-->
-<!--                <groupId>org.springframework.boot</groupId>-->
-<!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
-<!--                <configuration>-->
-<!--                    <finalName>${project.artifactId}</finalName>-->
-<!--                    <outputDirectory>../package</outputDirectory>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
-            <!-- 跳过启动测试 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -161,21 +170,6 @@
                 <artifactId>maven-deploy-plugin</artifactId>
                 <configuration>
                     <skip>true</skip>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>com.spotify</groupId>
-                <artifactId>dockerfile-maven-plugin</artifactId>
-                <version>1.4.13</version>
-                <configuration>
-                <!-- 生成docker镜像时，相关信息存储位置 -->
-                    <dockerInfoDirectory>src/main/docker</dockerInfoDirectory>
-                    <dockerConfigFile>src/main/docker</dockerConfigFile>
-                    <username>井底点灯少个1</username>
-                    <password>zp950617</password>
-                    <tag>${project.version}</tag>
-                    <repository>registry.cn-beijing.aliyuncs.com/docker-repo-zp/${project.artifactId}</repository>
                 </configuration>
             </plugin>
         </plugins>
